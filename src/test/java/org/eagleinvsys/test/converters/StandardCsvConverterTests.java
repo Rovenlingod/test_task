@@ -102,8 +102,8 @@ class StandardCsvConverterTests {
                 Map.of("testKey1", "secondTestValue1", "testKey2", "secondTestValue2"));
         ByteArrayOutputStream testBaos = new ByteArrayOutputStream();
         ConvertibleCollection testConvertibleCollection = new ConvertibleCollection() {
-            private Collection<String> headers = List.of("testKey1", "testKey2");
-            private Iterable<ConvertibleMessage> records = List.of(new ConvertibleMessage() {
+            private final Collection<String> headers = List.of("testKey1", "testKey2");
+            private final Iterable<ConvertibleMessage> records = List.of(new ConvertibleMessage() {
                 private final Map<String, String> data = Map.of("testKey1", "firstTestValue1", "testKey2", "firstTestValue2");
 
                 @Override

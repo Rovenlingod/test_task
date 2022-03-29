@@ -1,6 +1,5 @@
 package org.eagleinvsys.test.converters;
 
-import org.eagleinvsys.test.converters.exceptions.InvalidCollectionException;
 import org.eagleinvsys.test.converters.mappers.ConvertibleCollectionMapper;
 import org.eagleinvsys.test.converters.testDomain.ConvertibleMessageTestImpl;
 import org.junit.jupiter.api.Test;
@@ -8,11 +7,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.OutputStream;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class ConvertibleCollectionMapperTests {

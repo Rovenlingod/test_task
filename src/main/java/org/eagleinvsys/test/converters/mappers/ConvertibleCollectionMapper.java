@@ -60,8 +60,8 @@ public class ConvertibleCollectionMapper implements CollectionMapper {
 
         return Optional.of(new ConvertibleCollection() {
 
-            private Collection<String> headers = resultHeaders;
-            private Iterable<ConvertibleMessage> records = resultMessages;
+            private final Collection<String> headers = resultHeaders;
+            private final Iterable<ConvertibleMessage> records = resultMessages;
 
             @Override
             public Collection<String> getHeaders() {

@@ -2,7 +2,6 @@ package org.eagleinvsys.test.converters.testDomain;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Setter;
 import org.eagleinvsys.test.converters.ConvertibleCollection;
 import org.eagleinvsys.test.converters.ConvertibleMessage;
 

@@ -1,7 +1,6 @@
 package org.eagleinvsys.test.converters.impl;
 
 import org.eagleinvsys.test.converters.ConvertibleCollection;
-import org.eagleinvsys.test.converters.ConvertibleMessage;
 import org.eagleinvsys.test.converters.StandardConverter;
 import org.eagleinvsys.test.converters.exceptions.InvalidCollectionException;
 import org.eagleinvsys.test.converters.mappers.ConvertibleCollectionMapper;

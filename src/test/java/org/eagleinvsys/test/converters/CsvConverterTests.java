@@ -5,9 +5,6 @@ import org.eagleinvsys.test.converters.impl.CsvConverter;
 import org.eagleinvsys.test.converters.testDomain.ConvertibleCollectionTestImpl;
 import org.eagleinvsys.test.converters.testDomain.ConvertibleMessageTestImpl;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
