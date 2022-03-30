@@ -33,14 +33,14 @@ class StandardCsvConverterTests {
     public void givenNullCollection_whenConvert_thenThrowInvalidCollectionException() {
         Throwable actualException = assertThrows(InvalidCollectionException.class,
                 () -> standardCsvConverter.convert(null, OutputStream.nullOutputStream()));
-        assertEquals("Provided collectionToConvert can't be empty or null.", actualException.getMessage());
+        assertEquals("Provided collectionToConvert is empty or null.", actualException.getMessage());
     }
 
     @Test
     public void givenEmptyCollection_whenConvert_thenThrowInvalidCollectionException() {
         Throwable actualException = assertThrows(InvalidCollectionException.class,
                 () -> standardCsvConverter.convert(Collections.emptyList(), OutputStream.nullOutputStream()));
-        assertEquals("Provided collectionToConvert can't be empty or null.", actualException.getMessage());
+        assertEquals("Provided collectionToConvert is empty or null.", actualException.getMessage());
     }
 
     @Test
@@ -82,7 +82,7 @@ class StandardCsvConverterTests {
                 Map.of("testKey1", "secondTestValue1", "randomTestKey", "secondTestValue2"));
         Throwable actualException = assertThrows(InvalidCollectionException.class,
                 () -> standardCsvConverter.convert(testCollection, OutputStream.nullOutputStream()));
-        assertEquals("All maps must have the same set of keys.", actualException.getMessage());
+        assertEquals("At least one of the maps has different set of keys.", actualException.getMessage());
     }
 
     @Test
@@ -92,7 +92,7 @@ class StandardCsvConverterTests {
                 Map.of("testKey1", "secondTestValue1", "testKey", "secondTestValue2", "randomTestKey", "secondTestValue2"));
         Throwable actualException = assertThrows(InvalidCollectionException.class,
                 () -> standardCsvConverter.convert(testCollection, OutputStream.nullOutputStream()));
-        assertEquals("All maps must have the same set of keys.", actualException.getMessage());
+        assertEquals("At least one of the maps has different set of keys.", actualException.getMessage());
     }
 
     @Test

@@ -44,7 +44,7 @@ public class StandardCsvConverter implements StandardConverter {
      */
     private void validateCollection(List<Map<String, String>> collectionToConvert) {
         if (Objects.isNull(collectionToConvert) || collectionToConvert.isEmpty()) {
-            throw new InvalidCollectionException("Provided collectionToConvert can't be empty or null.");
+            throw new InvalidCollectionException("Provided collectionToConvert is empty or null.");
         }
         Map<String, String> firstRecord = collectionToConvert.get(0);
         if (Objects.isNull(firstRecord) || firstRecord.isEmpty()) {
@@ -57,7 +57,7 @@ public class StandardCsvConverter implements StandardConverter {
                 throw new InvalidCollectionException("One of the maps is empty or null.");
             }
             if (!map.keySet().equals(headers)) {
-                throw new InvalidCollectionException("All maps must have the same set of keys.");
+                throw new InvalidCollectionException("At least one of the maps has different set of keys.");
             }
         }
     }

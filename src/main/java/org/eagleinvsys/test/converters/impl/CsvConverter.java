@@ -59,13 +59,13 @@ public class CsvConverter implements Converter {
      */
     private void validateConvertibleCollection(@NonNull ConvertibleCollection collectionToConvert) {
         if (Objects.isNull(collectionToConvert.getHeaders()) || collectionToConvert.getHeaders().isEmpty()) {
-            throw new InvalidCollectionException("Provided headers can't be empty or null.");
+            throw new InvalidCollectionException("Headers are null.");
         }
         if (collectionToConvert.getHeaders().stream().anyMatch(Objects::isNull)) {
-            throw new InvalidCollectionException("Header cannot be null");
+            throw new InvalidCollectionException("At least one of the headers is null.");
         }
         if (Objects.isNull(collectionToConvert.getRecords())) {
-            throw new InvalidCollectionException("Provided records can't be null.");
+            throw new InvalidCollectionException("Records are null.");
         }
     }
 

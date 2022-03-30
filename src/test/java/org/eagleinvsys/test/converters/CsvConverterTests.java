@@ -44,7 +44,7 @@ class CsvConverterTests {
     }
 
     @Test
-    public void givenValidCollectionWithMultipleQuotes_whenConvert_thenOutputStreamContainsValidCSVSurroundedByQuotes() {
+    public void givenValidCollectionWithMultipleQuotes_whenConvert_thenOutputStreamContainsCSVSurroundedByQuotes() {
         ConvertibleMessage testFirstMessage = ConvertibleMessageTestImpl.builder()
                 .data(Map.of("header1", "validString with \"quotes\"", "header2", "firstRecordValue2", "header3", "firstRecordValue3"))
                 .build();
@@ -62,7 +62,7 @@ class CsvConverterTests {
     }
 
     @Test
-    public void givenValidCollectionWithQuote_whenConvert_thenOutputStreamContainsValidCSVSurroundedByQuotes() {
+    public void givenValidCollectionWithQuote_whenConvert_thenOutputStreamContainsCSVSurroundedByQuotes() {
         ConvertibleMessage testFirstMessage = ConvertibleMessageTestImpl.builder()
                 .data(Map.of("header1", "validString with \"quote", "header2", "firstRecordValue2", "header3", "firstRecordValue3"))
                 .build();
@@ -80,7 +80,7 @@ class CsvConverterTests {
     }
 
     @Test
-    public void givenValidCollectionWithComma_whenConvert_thenOutputStreamContainsValidCSVSurroundedByQuotes() {
+    public void givenValidCollectionWithComma_whenConvert_thenOutputStreamContainsCSVSurroundedByQuotes() {
         ConvertibleMessage testFirstMessage = ConvertibleMessageTestImpl.builder()
                 .data(Map.of("header1", "validString with, comma", "header2", "firstRecordValue2", "header3", "firstRecordValue3"))
                 .build();
@@ -98,7 +98,7 @@ class CsvConverterTests {
     }
 
     @Test
-    public void givenValidCollectionWithMultipleCommas_whenConvert_thenOutputStreamContainsValidCSVSurroundedByQuotes() {
+    public void givenValidCollectionWithMultipleCommas_whenConvert_thenOutputStreamContainsCSVSurroundedByQuotes() {
         ConvertibleMessage testFirstMessage = ConvertibleMessageTestImpl.builder()
                 .data(Map.of("header1", "validString with, multiple, commas", "header2", "firstRecordValue2", "header3", "firstRecordValue3"))
                 .build();
@@ -116,7 +116,7 @@ class CsvConverterTests {
     }
 
     @Test
-    public void givenValidCollectionWithSingleQuote_whenConvert_thenOutputStreamContainsValidCSVSurroundedByQuotes() {
+    public void givenValidCollectionWithSingleQuote_whenConvert_thenOutputStreamContainsCSVSurroundedByQuotes() {
         ConvertibleMessage testFirstMessage = ConvertibleMessageTestImpl.builder()
                 .data(Map.of("header1", "validString with single quote can't", "header2", "firstRecordValue2", "header3", "firstRecordValue3"))
                 .build();
@@ -134,7 +134,7 @@ class CsvConverterTests {
     }
 
     @Test
-    public void givenValidCollectionWithMultipleSingleQuotes_whenConvert_thenOutputStreamContainsValidCSVSurroundedByQuotes() {
+    public void givenValidCollectionWithMultipleSingleQuotes_whenConvert_thenOutputStreamContainsCSVSurroundedByQuotes() {
         ConvertibleMessage testFirstMessage = ConvertibleMessageTestImpl.builder()
                 .data(Map.of("header1", "validString with 'multiple single quotes'", "header2", "firstRecordValue2", "header3", "firstRecordValue3"))
                 .build();
@@ -152,7 +152,7 @@ class CsvConverterTests {
     }
 
     @Test
-    public void givenValidCollectionWithWhitespaceCharacter_whenConvert_thenOutputStreamContainsValidCSVWithSpaceInsteadOfWhiteSpaceCharacter() {
+    public void givenValidCollectionWithWhitespaceCharacter_whenConvert_thenWhiteSpaceCharacterReplacedBySpace() {
         ConvertibleMessage testFirstMessage = ConvertibleMessageTestImpl.builder()
                 .data(Map.of("header1", "validString with\nwhitespace character", "header2", "firstRecordValue2", "header3", "firstRecordValue3"))
                 .build();
@@ -170,7 +170,7 @@ class CsvConverterTests {
     }
 
     @Test
-    public void givenValidCollectionWithMultipleWhitespaceCharacters_whenConvert_thenOutputStreamContainsValidCSVWithSpaceInsteadOfWhiteSpaceCharacters() {
+    public void givenCollectionWithWhitespaceCharacters_whenConvert_thenWhiteSpaceCharactersReplacedBySpaces() {
         ConvertibleMessage testFirstMessage = ConvertibleMessageTestImpl.builder()
                 .data(Map.of("header1", "validString with\na bunch of\traw string literals", "header2", "firstRecordValue2", "header3", "firstRecordValue3"))
                 .build();
@@ -203,7 +203,7 @@ class CsvConverterTests {
 
         Throwable actualException = assertThrows(InvalidCollectionException.class,
                 () -> csvConverter.convert(testInvalidCollection, OutputStream.nullOutputStream()));
-        assertEquals("Header cannot be null", actualException.getMessage());
+        assertEquals("At least one of the headers is null.", actualException.getMessage());
     }
 
     @Test
@@ -245,7 +245,7 @@ class CsvConverterTests {
 
         Throwable actualException = assertThrows(InvalidCollectionException.class,
                 () -> csvConverter.convert(testInvalidCollection, OutputStream.nullOutputStream()));
-        assertEquals("Provided headers can't be empty or null.", actualException.getMessage());
+        assertEquals("Headers are null.", actualException.getMessage());
     }
 
     @Test
@@ -259,6 +259,6 @@ class CsvConverterTests {
 
         Throwable actualException = assertThrows(InvalidCollectionException.class,
                 () -> csvConverter.convert(testInvalidCollection, OutputStream.nullOutputStream()));
-        assertEquals("Provided records can't be null.", actualException.getMessage());
+        assertEquals("Records are null.", actualException.getMessage());
     }
 }
